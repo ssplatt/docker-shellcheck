@@ -1,2 +1,7 @@
 # docker-shellcheck
-SHellckech container for use in CircleCI
+Shellcheck container for use in CircleCI
+
+Includes:
+- `shellcheck`
+- `ghr`
+- `awscli`
