@@ -6,7 +6,8 @@ orbs:
 workflows:
   default:
     jobs:
-      - docker/hadolint
+      - docker/hadolint:
+          ignore-rules: DL3004
       - docker/publish:
           image: ssplatt/shellcheck
           update-description: true

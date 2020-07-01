@@ -4,7 +4,7 @@ RUN sudo apt-get update \
       && sudo apt-get upgrade -y \
       && sudo apt-get install -y cabal-install \
       && sudo apt-get clean
-WORKDIR ./build/
+WORKDIR /go/build/
 RUN cabal update \
       && cabal install
 
