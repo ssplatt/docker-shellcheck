@@ -4,6 +4,19 @@ orbs:
   docker: circleci/docker@1.2.1
 
 workflows:
+  weekly-build:
+    triggers:
+      - schedule:
+          cron: "1 1 * * 1"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - docker/publish:
+          image: ssplatt/shellcheck
+          update-description: true
+          context: dockerhub
   default:
     jobs:
       - docker/hadolint:
@@ -11,8 +24,10 @@ workflows:
       - docker/publish:
           image: ssplatt/shellcheck
           update-description: true
+          tag: latest,$CIRCLE_SHA1
           requires:
             - docker/hadolint
+          context: dockerhub
           filters:
             branches:
               only:
